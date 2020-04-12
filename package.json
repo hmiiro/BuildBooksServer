@@ -1,0 +1,24 @@
+{
+  "name": "BuildBooks",
+  "version": "1.0.0",
+  "description": "Managing Building Projects finances",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index",
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "Miiro Hassan",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.11.0",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^14.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
