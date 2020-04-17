@@ -3,6 +3,11 @@ const { model, Schema } = require('mongoose');
 const { billStatus } = require('../util/status');
 
 const billSchema = new Schema({
+  transDt: {
+    type: String,
+    trim: true,
+    required: true,
+  },
   billNo: {
     type: String,
     trim: true,
@@ -45,6 +50,11 @@ const billSchema = new Schema({
   billItems: [
     {
       itemCode: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      name: {
         type: String,
         trim: true,
         required: true,

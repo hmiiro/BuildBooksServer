@@ -1,21 +1,15 @@
 const billResolvers = require('./bills');
 const usersResolvers = require('./users');
-const commentsResolvers = require('./comments');
+const itemResolvers = require('./items');
 
 module.exports = {
-  //   Bill: {
-  //     likeCount: parent => parent.likes.length,
-  //     commentCount: parent => parent.comments.length
-  //   },
   Query: {
-    ...billResolvers.Query
+    ...billResolvers.Query,
+    ...itemResolvers.Query,
   },
   Mutation: {
     ...usersResolvers.Mutation,
-    ...billResolvers.Mutation
-    // ...commentsResolvers.Mutation
+    ...billResolvers.Mutation,
+    ...itemResolvers.Mutation,
   },
-  Subscription: {
-    ...billResolvers.Subscription
-  }
 };

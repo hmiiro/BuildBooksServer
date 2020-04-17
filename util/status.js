@@ -5,7 +5,7 @@ module.exports = {
     PAID: 'Fully Paid',
     ONHOLD: 'On Hold',
     CANCELLED: 'Cancelled',
-    DELETED: 'Deleted'
+    DELETED: 'Deleted',
   },
   invoiceStatus: {
     NOTPAID: 'Not Paid',
@@ -13,6 +13,6 @@ module.exports = {
     PAID: 'Fully Paid',
     ONHOLD: 'On Hold',
     CANCELLED: 'Cancelled',
-    DELETED: 'Deleted'
-  }
+    DELETED: 'Deleted',
+  },
 };

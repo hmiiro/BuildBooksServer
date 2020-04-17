@@ -4,25 +4,31 @@ const itemSchema = new Schema({
   itemCode: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+  },
+  name: {
+    type: String,
+    trim: true,
+    required: true,
   },
   desc: {
     type: String,
-    trim: true
+    trim: true,
   },
-  cost: {
+
+  rate: {
     type: Number,
-    default: 0
+    default: 0,
   },
   isActive: {
     type: String,
     required: true,
-    default: 'Y'
+    default: 'Y',
   },
   user: {
-    type: String
+    type: String,
   },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = model('Item', itemSchema);

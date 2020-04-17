@@ -3,6 +3,7 @@ const { gql } = require('apollo-server');
 module.exports = gql`
   type Bill {
     id: ID!
+    transDt: String!
     billNo: String!
     totItems: Int!
     totAmt: Int!
@@ -17,12 +18,29 @@ module.exports = gql`
   }
   type BillItem {
     id: ID!
+    name: String!
     itemCode: String!
     desc: String
     qty: Int!
     rate: Int!
     isActive: String!
     createdAt: String!
+  }
+  type Item {
+    id: ID!
+    itemCode: String!
+    name: String!
+    desc: String
+    qty: Int!
+    rate: Int!
+    isActive: String!
+    createdAt: String!
+  }
+  input ItemInput {
+    name: String!
+    desc: String
+    qty: Int!
+    rate: Int!
   }
   type Supplier {
     id: ID!
@@ -41,15 +59,17 @@ module.exports = gql`
     createdAt: String!
   }
   input BillInput {
+    transDt: String!
+    supplier: String!
     totItems: Int!
     totAmt: Int!
     totPaid: Int!
     totBal: Int!
-    supplier: String
     billItems: [BillItemInput]!
   }
   input BillItemInput {
     itemCode: String!
+    name: String!
     desc: String
     qty: Int!
     rate: Int!
@@ -64,6 +84,8 @@ module.exports = gql`
     getBills: [Bill]
     getBill(billNo: String!): Bill
     getBillItems: [BillItem]
+    getItems: [Item]
+    getItem: Item
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
@@ -71,9 +93,8 @@ module.exports = gql`
     createBill(input: BillInput!): Bill!
     deleteBill(billNo: String!): String!
     deleteBillPermanently(billNo: String!): String!
-    # createBillItem(billItemInput: BillItemInput!): BillItem!
-  }
-  type Subscription {
-    newBill: Bill!
+    createItem(input: ItemInput!): Item!
+    deleteItem(itemCode: String!): String
+    deleteItemPermanently(itemCode: String!): String
   }
 `;

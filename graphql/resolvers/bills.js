@@ -39,11 +39,12 @@ module.exports = {
       const user = checkAuth(context);
       // changing the sent values to an "object"
       const {
+        transDt,
+        supplier,
         totItems,
         totAmt,
         totPaid,
         totBal,
-        supplier,
         billItems,
       } = JSON.parse(JSON.stringify(input));
 
@@ -61,6 +62,7 @@ module.exports = {
         try {
           // Now generate Bill instance with its items
           const newBill = new Bill({
+            transDt,
             billNo,
             totItems,
             totAmt,
@@ -100,7 +102,7 @@ module.exports = {
       }
     },
     async deleteBillPermanently(_, { billNo }, context) {
-      //TODO: Apply roles such that one with admin roll can delete
+      //TODO: Apply roles such that one with admin roll can delete permanently
       const user = checkAuth(context);
 
       try {
@@ -116,26 +118,6 @@ module.exports = {
         throw new Error(err);
       }
     },
-    // async likeBill(_, { billNo }, context) {
-    //   const { username } = checkAuth(context);
-
-    //   const bill = await Bill.findById(billNo);
-    //   if (bill) {
-    //     if (bill.likes.find(like => like.username === username)) {
-    //       // Bill already likes, unlike it
-    //       bill.likes = bill.likes.filter(like => like.username !== username);
-    //     } else {
-    //       // Not liked, like bill
-    //       bill.likes.push({
-    //         username,
-    //         createdAt: new Date().toISOString()
-    //       });
-    //     }
-
-    //     await bill.save();
-    //     return bill;
-    //   } else throw new UserInputError('Bill not found');
-    // }
   },
 };
 
