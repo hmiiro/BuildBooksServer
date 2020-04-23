@@ -31,16 +31,14 @@ module.exports = gql`
     itemCode: String!
     name: String!
     desc: String
-    qty: Int!
-    rate: Int!
+    label: String
+    value: String
     isActive: String!
     createdAt: String!
   }
   input ItemInput {
     name: String!
     desc: String
-    qty: Int!
-    rate: Int!
   }
   type Supplier {
     id: ID!

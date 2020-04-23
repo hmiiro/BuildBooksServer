@@ -36,7 +36,7 @@ module.exports = {
     async createItem(parent, { input }, context) {
       const user = checkAuth(context);
       // changing the sent values to an "object"
-      const { name, desc, qty, rate } = JSON.parse(JSON.stringify(input));
+      const { name, desc } = JSON.parse(JSON.stringify(input));
 
       // 1st generate itemCode
       const itemCode = await genItemCode();
@@ -54,8 +54,8 @@ module.exports = {
             itemCode,
             name,
             desc,
-            qty,
-            rate,
+            label: name,
+            value: name,
             user: user.id,
             createdAt: moment().format(),
           });

@@ -16,19 +16,23 @@ const itemSchema = new Schema({
     trim: true,
   },
 
-  rate: {
-    type: Number,
-    default: 0,
-  },
-  isActive: {
+  label: {
     type: String,
-    required: true,
-    default: 'Y',
+    trim: true,
+  },
+  value: {
+    type: String,
+    trim: true,
   },
   user: {
     type: String,
   },
   createdAt: { type: Date, default: Date.now },
+  isActive: {
+    type: String,
+    required: true,
+    default: 'Y',
+  },
 });
 
 module.exports = model('Item', itemSchema);
